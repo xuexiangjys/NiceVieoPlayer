@@ -3,10 +3,12 @@ package com.xiao.nicevideoplayer;
 import android.util.Log;
 
 /**
- * Created by XiaoJianjun on 2017/5/4.
  * log工具.
+ *
+ * @author xuexiang
+ * @since 2018/5/31 下午7:23
  */
-public class LogUtil {
+final class LogUtils {
 
     private static final String TAG = "NiceVideoPlayer";
 

@@ -1,8 +1,10 @@
 package com.xiao.nicevideoplayer;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
@@ -13,16 +15,17 @@ import java.util.Formatter;
 import java.util.Locale;
 
 /**
- * Created by XiaoJianjun on 2017/5/8.
- * 工具类.
+ * @author xuexiang
+ * @since 2018/5/31 下午7:18
  */
-public class NiceUtil {
+final class NiceUtils {
     /**
      * Get activity from context object
      *
      * @param context something
      * @return object of Activity or null if it is not Activity
      */
+    @Nullable
     public static Activity scanForActivity(Context context) {
         if (context == null) return null;
         if (context instanceof Activity) {
@@ -39,37 +42,52 @@ public class NiceUtil {
      * @param context
      * @return AppCompatActivity if it's not null
      */
-    private static AppCompatActivity getAppCompActivity(Context context) {
+    @Nullable
+    private static AppCompatActivity getAppCompatActivity(Context context) {
         if (context == null) return null;
         if (context instanceof AppCompatActivity) {
             return (AppCompatActivity) context;
         } else if (context instanceof ContextThemeWrapper) {
-            return getAppCompActivity(((ContextThemeWrapper) context).getBaseContext());
+            return getAppCompatActivity(((ContextThemeWrapper) context).getBaseContext());
         }
         return null;
     }
 
+    @SuppressLint("RestrictedApi")
     public static void showActionBar(Context context) {
-        ActionBar ab = getAppCompActivity(context).getSupportActionBar();
-        if (ab != null) {
-            ab.setShowHideAnimationEnabled(false);
-            ab.show();
+        AppCompatActivity appCompatActivity = getAppCompatActivity(context);
+        if (appCompatActivity != null) {
+            ActionBar ab = appCompatActivity.getSupportActionBar();
+            if (ab != null) {
+                ab.setShowHideAnimationEnabled(false);
+                ab.show();
+            }
         }
-        scanForActivity(context)
-                .getWindow()
-                .clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Activity activity = scanForActivity(context);
+        if (activity != null) {
+            activity.getWindow()
+                    .clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
     }
 
+    @SuppressLint("RestrictedApi")
     public static void hideActionBar(Context context) {
-        ActionBar ab = getAppCompActivity(context).getSupportActionBar();
-        if (ab != null) {
-            ab.setShowHideAnimationEnabled(false);
-            ab.hide();
+        AppCompatActivity appCompatActivity = getAppCompatActivity(context);
+        if (appCompatActivity != null) {
+            ActionBar ab = appCompatActivity.getSupportActionBar();
+            if (ab != null) {
+                ab.setShowHideAnimationEnabled(false);
+                ab.hide();
+            }
         }
-        scanForActivity(context)
-                .getWindow()
-                .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                        WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Activity activity = scanForActivity(context);
+        if (activity != null) {
+            activity.getWindow()
+                    .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
     }
 
     /**

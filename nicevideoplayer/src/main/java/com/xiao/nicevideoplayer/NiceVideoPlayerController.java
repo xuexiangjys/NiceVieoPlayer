@@ -69,7 +69,7 @@ public abstract class NiceVideoPlayerController
     /**
      * 设置总时长.
      */
-    public abstract void setLenght(long length);
+    public abstract void setLength(long length);
 
     /**
      * 当播放器的播放状态发生变化，在此方法中国你更新不同的播放状态的UI
@@ -191,7 +191,7 @@ public abstract class NiceVideoPlayerController
                         if (mDownX < getWidth() * 0.5f) {
                             // 左侧改变亮度
                             mNeedChangeBrightness = true;
-                            mGestureDownBrightness = NiceUtil.scanForActivity(mContext)
+                            mGestureDownBrightness = NiceUtils.scanForActivity(mContext)
                                     .getWindow().getAttributes().screenBrightness;
                         } else {
                             // 右侧改变声音
@@ -213,10 +213,10 @@ public abstract class NiceVideoPlayerController
                     float newBrightness = mGestureDownBrightness + deltaBrightness;
                     newBrightness = Math.max(0, Math.min(newBrightness, 1));
                     float newBrightnessPercentage = newBrightness;
-                    WindowManager.LayoutParams params = NiceUtil.scanForActivity(mContext)
+                    WindowManager.LayoutParams params = NiceUtils.scanForActivity(mContext)
                             .getWindow().getAttributes();
                     params.screenBrightness = newBrightnessPercentage;
-                    NiceUtil.scanForActivity(mContext).getWindow().setAttributes(params);
+                    NiceUtils.scanForActivity(mContext).getWindow().setAttributes(params);
                     int newBrightnessProgress = (int) (100f * newBrightnessPercentage);
                     showChangeBrightness(newBrightnessProgress);
                 }

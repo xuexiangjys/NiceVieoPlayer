@@ -2,7 +2,6 @@ package com.xiao.nicevideoplayer;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,8 +46,8 @@ public class ChangeClarityDialog extends Dialog {
         setContentView(mLinearLayout, params);
 
         WindowManager.LayoutParams windowParams = getWindow().getAttributes();
-        windowParams.width = NiceUtil.getScreenHeight(context);
-        windowParams.height = NiceUtil.getScreenWidth(context);
+        windowParams.width = NiceUtils.getScreenHeight(context);
+        windowParams.height = NiceUtils.getScreenWidth(context);
         getWindow().setAttributes(windowParams);
     }
 
@@ -86,7 +85,7 @@ public class ChangeClarityDialog extends Dialog {
             itemView.setSelected(i == defaultChecked);
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams)
                     itemView.getLayoutParams();
-            params.topMargin = (i == 0) ? 0 : NiceUtil.dp2px(getContext(), 16f);
+            params.topMargin = (i == 0) ? 0 : NiceUtils.dp2px(getContext(), 16f);
             mLinearLayout.addView(itemView, params);
         }
     }
