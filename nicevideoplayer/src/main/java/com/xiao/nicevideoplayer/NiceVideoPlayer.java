@@ -240,6 +240,24 @@ public class NiceVideoPlayer extends FrameLayout
         }
     }
 
+    /**
+     * @return 获取资源地址
+     */
+    public String getUrl() {
+        return mUrl;
+    }
+
+    /**
+     * @return 获取资源定位符
+     */
+    public Uri getUri() {
+        return Uri.parse(mUrl);
+    }
+
+    public NiceVideoPlayerController getController() {
+        return mController;
+    }
+
     @Override
     public boolean isIdle() {
         return mCurrentState == STATE_IDLE;

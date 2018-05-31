@@ -12,8 +12,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by XiaoJianjun on 2017/6/21.
  * 控制器抽象类
+ *
+ * @author xuexiang
+ * @since 2018/5/31 下午8:51
  */
 public abstract class NiceVideoPlayerController
         extends FrameLayout implements View.OnTouchListener {
