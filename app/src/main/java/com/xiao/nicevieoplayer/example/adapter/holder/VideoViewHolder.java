@@ -39,7 +39,7 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
         mController.setLength(video.getLength());
         Glide.with(itemView.getContext())
                 .load(video.getImageUrl())
-                .placeholder(R.drawable.img_default)
+                .placeholder(R.drawable.player_img_default)
                 .crossFade()
                 .into(mController.imageView());
         mVideoPlayer.setUp(video.getVideoUrl(), null);

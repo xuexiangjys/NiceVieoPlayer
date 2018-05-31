@@ -7,7 +7,7 @@
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/img_default"
+        android:background="@drawable/player_img_default"
         android:scaleType="fitXY"
         android:visibility="visible"/>
     <!--加载动画-->
@@ -22,7 +22,7 @@
         <ProgressBar
             android:layout_width="27dp"
             android:layout_height="10dp"
-            android:indeterminateDrawable="@drawable/loading"/>
+            android:indeterminateDrawable="@drawable/player_loading"/>
 
         <TextView
             android:id="@+id/load_text"
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/bg_radius_4"
+        android:background="@drawable/player_bg_radius_4"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
@@ -61,7 +61,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginTop="8dp"
             android:max="100"
-            android:progressDrawable="@drawable/pb_change"/>
+            android:progressDrawable="@drawable/player_pb_change"/>
     </LinearLayout>
     <!--改变亮度-->
     <LinearLayout
@@ -69,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/bg_radius_4"
+        android:background="@drawable/player_bg_radius_4"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
@@ -78,7 +78,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_palyer_brightness"/>
+            android:src="@drawable/player_ic_brightness"/>
 
         <ProgressBar
             android:id="@+id/change_brightness_progress"
@@ -88,7 +88,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginTop="8dp"
             android:max="100"
-            android:progressDrawable="@drawable/pb_change"/>
+            android:progressDrawable="@drawable/player_pb_change"/>
 
     </LinearLayout>
     <!--改变声音-->
@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/bg_radius_4"
+        android:background="@drawable/player_bg_radius_4"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
@@ -106,7 +106,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_palyer_volume"/>
+            android:src="@drawable/player_ic_volume"/>
 
         <ProgressBar
             android:id="@+id/change_volume_progress"
@@ -116,7 +116,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginTop="8dp"
             android:max="100"
-            android:progressDrawable="@drawable/pb_change"/>
+            android:progressDrawable="@drawable/player_pb_change"/>
 
     </LinearLayout>
     <!--播放完成-->
@@ -133,7 +133,7 @@
             android:id="@+id/replay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_player_replay"
+            android:drawableLeft="@drawable/player_ic_replay"
             android:drawablePadding="4dp"
             android:padding="8dp"
             android:text="重新播放"
@@ -145,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="64dp"
-            android:drawableLeft="@drawable/ic_palyer_share"
+            android:drawableLeft="@drawable/player_ic_share"
             android:drawablePadding="4dp"
             android:padding="8dp"
             android:text="分享"
@@ -174,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@drawable/bg_retry"
+            android:background="@drawable/player_bg_retry"
             android:paddingBottom="5dp"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
@@ -197,7 +197,7 @@
             android:id="@+id/back"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_player_back"
+            android:src="@drawable/player_ic_back"
             android:visibility="visible"/>
 
         <TextView
@@ -223,7 +223,7 @@
                 android:id="@+id/battery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/battery_100"/>
+                android:src="@drawable/player_battery_100"/>
 
             <TextView
                 android:id="@+id/time"
@@ -249,7 +249,7 @@
             android:id="@+id/restart_or_pause"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_player_start"/>
+            android:src="@drawable/player_ic_start"/>
 
         <TextView
             android:id="@+id/position"
@@ -285,8 +285,8 @@
             android:max="100"
             android:maxHeight="1.5dp"
             android:minHeight="1.5dp"
-            android:progressDrawable="@drawable/seek_progress"
-            android:thumb="@drawable/seek_thumb"/>
+            android:progressDrawable="@drawable/player_seek_progress"
+            android:thumb="@drawable/player_seek_thumb"/>
 
         <TextView
             android:id="@+id/clarity"
@@ -302,7 +302,7 @@
             android:id="@+id/full_screen"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_player_enlarge"/>
+            android:src="@drawable/player_ic_enlarge"/>
     </LinearLayout>
     <!--右下角初始显示的总时长-->
     <TextView
@@ -323,7 +323,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_player_center_start"
+        android:src="@drawable/player_ic_center_start"
         android:visibility="visible"/>
 
 </RelativeLayout>

@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -97,7 +96,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
     }
 
     private void initViews() {
-        LayoutInflater.from(mContext).inflate(R.layout.tx_video_palyer_controller, this, true);
+        LayoutInflater.from(mContext).inflate(R.layout.tx_video_player_controller, this, true);
 
         mCenterStart = findViewById(R.id.center_start);
         mImage = findViewById(R.id.image);
@@ -230,23 +229,23 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
                 break;
             case NiceVideoPlayer.STATE_PLAYING:
                 mLoading.setVisibility(View.GONE);
-                mRestartPause.setImageResource(R.drawable.ic_player_pause);
+                mRestartPause.setImageResource(R.drawable.player_ic_pause);
                 startDismissTopBottomTimer();
                 break;
             case NiceVideoPlayer.STATE_PAUSED:
                 mLoading.setVisibility(View.GONE);
-                mRestartPause.setImageResource(R.drawable.ic_player_start);
+                mRestartPause.setImageResource(R.drawable.player_ic_start);
                 cancelDismissTopBottomTimer();
                 break;
             case NiceVideoPlayer.STATE_BUFFERING_PLAYING:
                 mLoading.setVisibility(View.VISIBLE);
-                mRestartPause.setImageResource(R.drawable.ic_player_pause);
+                mRestartPause.setImageResource(R.drawable.player_ic_pause);
                 mLoadText.setText("正在缓冲...");
                 startDismissTopBottomTimer();
                 break;
             case NiceVideoPlayer.STATE_BUFFERING_PAUSED:
                 mLoading.setVisibility(View.VISIBLE);
-                mRestartPause.setImageResource(R.drawable.ic_player_start);
+                mRestartPause.setImageResource(R.drawable.player_ic_start);
                 mLoadText.setText("正在缓冲...");
                 cancelDismissTopBottomTimer();
                 break;
@@ -272,7 +271,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
         switch (playMode) {
             case NiceVideoPlayer.MODE_NORMAL:
                 mBack.setVisibility(View.GONE);
-                mFullScreen.setImageResource(R.drawable.ic_player_enlarge);
+                mFullScreen.setImageResource(R.drawable.player_ic_enlarge);
                 mFullScreen.setVisibility(View.VISIBLE);
                 mClarity.setVisibility(View.GONE);
                 mBatteryTime.setVisibility(View.GONE);
@@ -284,7 +283,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
             case NiceVideoPlayer.MODE_FULL_SCREEN:
                 mBack.setVisibility(View.VISIBLE);
                 mFullScreen.setVisibility(View.GONE);
-                mFullScreen.setImageResource(R.drawable.ic_player_shrink);
+                mFullScreen.setImageResource(R.drawable.player_ic_shrink);
                 if (clarities != null && clarities.size() > 1) {
                     mClarity.setVisibility(View.VISIBLE);
                 }
@@ -312,24 +311,24 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
                     BatteryManager.BATTERY_STATUS_UNKNOWN);
             if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
                 // 充电中
-                mBattery.setImageResource(R.drawable.battery_charging);
+                mBattery.setImageResource(R.drawable.player_battery_charging);
             } else if (status == BatteryManager.BATTERY_STATUS_FULL) {
                 // 充电完成
-                mBattery.setImageResource(R.drawable.battery_full);
+                mBattery.setImageResource(R.drawable.player_battery_full);
             } else {
                 int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
                 int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, 0);
                 int percentage = (int) (((float) level / scale) * 100);
                 if (percentage <= 10) {
-                    mBattery.setImageResource(R.drawable.battery_10);
+                    mBattery.setImageResource(R.drawable.player_battery_10);
                 } else if (percentage <= 20) {
-                    mBattery.setImageResource(R.drawable.battery_20);
+                    mBattery.setImageResource(R.drawable.player_battery_20);
                 } else if (percentage <= 50) {
-                    mBattery.setImageResource(R.drawable.battery_50);
+                    mBattery.setImageResource(R.drawable.player_battery_50);
                 } else if (percentage <= 80) {
-                    mBattery.setImageResource(R.drawable.battery_80);
+                    mBattery.setImageResource(R.drawable.player_battery_80);
                 } else if (percentage <= 100) {
-                    mBattery.setImageResource(R.drawable.battery_100);
+                    mBattery.setImageResource(R.drawable.player_battery_100);
                 }
             }
         }
@@ -347,7 +346,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
         mImage.setVisibility(View.VISIBLE);
 
         mBottom.setVisibility(View.GONE);
-        mFullScreen.setImageResource(R.drawable.ic_player_enlarge);
+        mFullScreen.setImageResource(R.drawable.player_ic_enlarge);
 
         mLength.setVisibility(View.VISIBLE);
 

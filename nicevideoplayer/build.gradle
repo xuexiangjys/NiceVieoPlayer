@@ -26,3 +26,5 @@ dependencies {
     implementation 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.3'
     implementation 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.3'
 }
+
+apply from: "https://raw.githubusercontent.com/xuexiangjys/XUtil/master/JitPackUpload.gradle"
