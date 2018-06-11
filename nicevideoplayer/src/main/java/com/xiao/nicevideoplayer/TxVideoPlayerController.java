@@ -173,6 +173,14 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
         mLength.setText(NiceUtils.formatTime(length));
     }
 
+    /**
+     * 获取总长度的TextView
+     * @return
+     */
+    public TextView getTotalLengthText() {
+        return mLength;
+    }
+
     @Override
     public void setNiceVideoPlayer(INiceVideoPlayer niceVideoPlayer) {
         super.setNiceVideoPlayer(niceVideoPlayer);
