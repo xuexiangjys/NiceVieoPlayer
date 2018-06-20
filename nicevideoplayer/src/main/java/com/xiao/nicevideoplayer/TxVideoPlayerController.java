@@ -53,7 +53,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
     private LinearLayout mLoading;
     private TextView mLoadText;
 
-    private LinearLayout mChangePositon;
+    private LinearLayout mChangePosition;
     private TextView mChangePositionCurrent;
     private ProgressBar mChangePositionProgress;
 
@@ -81,6 +81,11 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
     private boolean hasRegisterBatteryReceiver; // 是否已经注册了电池广播
 
     private OnShareListener mOnShareListener;
+
+    /**
+     * 是否显示底部进度条
+     */
+    private boolean mIsShowBottomController = true;
 
     public TxVideoPlayerController(Context context) {
         super(context);
@@ -120,7 +125,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
         mLoading = findViewById(R.id.loading);
         mLoadText = findViewById(R.id.load_text);
 
-        mChangePositon = findViewById(R.id.change_position);
+        mChangePosition = findViewById(R.id.change_position);
         mChangePositionCurrent = findViewById(R.id.change_position_current);
         mChangePositionProgress = findViewById(R.id.change_position_progress);
 
@@ -188,6 +193,16 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
         if (clarities != null && clarities.size() > 1) {
             mNiceVideoPlayer.setUp(clarities.get(defaultClarityIndex).videoUrl, null);
         }
+    }
+
+    /**
+     * 设置是否显示底部进度条
+     * @param isShowBottomController
+     * @return
+     */
+    public TxVideoPlayerController setIsShowBottomController(boolean isShowBottomController) {
+        mIsShowBottomController = isShowBottomController;
+        return this;
     }
 
     /**
@@ -439,7 +454,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
      */
     private void setTopBottomVisible(boolean visible) {
         mTop.setVisibility(visible ? View.VISIBLE : View.GONE);
-        mBottom.setVisibility(visible ? View.VISIBLE : View.GONE);
+        mBottom.setVisibility(visible && mIsShowBottomController ? View.VISIBLE : View.GONE);
         topBottomVisible = visible;
         if (visible) {
             if (!mNiceVideoPlayer.isPaused() && !mNiceVideoPlayer.isBufferingPaused()) {
@@ -516,7 +531,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
 
     @Override
     protected void showChangePosition(long duration, int newPositionProgress) {
-        mChangePositon.setVisibility(View.VISIBLE);
+        mChangePosition.setVisibility(View.VISIBLE);
         long newPosition = (long) (duration * newPositionProgress / 100f);
         mChangePositionCurrent.setText(NiceUtils.formatTime(newPosition));
         mChangePositionProgress.setProgress(newPositionProgress);
@@ -526,7 +541,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
 
     @Override
     protected void hideChangePosition() {
-        mChangePositon.setVisibility(View.GONE);
+        mChangePosition.setVisibility(View.GONE);
     }
 
     @Override

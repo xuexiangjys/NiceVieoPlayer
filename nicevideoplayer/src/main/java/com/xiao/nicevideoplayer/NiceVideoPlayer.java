@@ -14,7 +14,6 @@ import android.view.TextureView;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import java.io.IOException;
 import java.util.Map;
 
 import tv.danmaku.ijk.media.player.AndroidMediaPlayer;
@@ -428,6 +427,7 @@ public class NiceVideoPlayer extends FrameLayout
         mMediaPlayer.setOnErrorListener(mOnErrorListener);
         mMediaPlayer.setOnInfoListener(mOnInfoListener);
         mMediaPlayer.setOnBufferingUpdateListener(mOnBufferingUpdateListener);
+
         // 设置dataSource
         try {
             mMediaPlayer.setDataSource(mContext.getApplicationContext(), Uri.parse(mUrl), mHeaders);
@@ -439,10 +439,13 @@ public class NiceVideoPlayer extends FrameLayout
             mCurrentState = STATE_PREPARING;
             mController.onPlayStateChanged(mCurrentState);
             LogUtils.d("STATE_PREPARING");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            mCurrentState = STATE_ERROR;
+            mController.onPlayStateChanged(mCurrentState);
             LogUtils.e("打开播放器发生错误", e);
         }
+
     }
 
     @Override
@@ -581,7 +584,7 @@ public class NiceVideoPlayer extends FrameLayout
         NiceUtils.scanForActivity(mContext)
                 .setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        ViewGroup contentView = (ViewGroup) NiceUtils.scanForActivity(mContext)
+        ViewGroup contentView = NiceUtils.scanForActivity(mContext)
                 .findViewById(android.R.id.content);
         if (mCurrentMode == MODE_TINY_WINDOW) {
             contentView.removeView(mContainer);

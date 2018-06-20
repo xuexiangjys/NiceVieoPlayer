@@ -31,6 +31,7 @@ public class TinyWindowPlayActivity extends AppCompatActivity {
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle("办公室小野开番外了，居然在办公室开澡堂！老板还点赞？");
         controller.setLength(98000);
+        controller.setIsShowBottomController(false);
         Glide.with(this)
                 .load("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-30-43.jpg")
                 .placeholder(R.drawable.player_img_default)
