@@ -31,8 +31,8 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
 
     private Context mContext;
     private ImageView mImage;
-    private ImageView mCenterStart;
 
+    //顶部区域
     private LinearLayout mTop;
     private ImageView mBack;
     private TextView mTitle;
@@ -40,7 +40,19 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
     private ImageView mBattery;
     private TextView mTime;
 
+    //中部区域
+    private ImageView mCenterStart;
+
+    private LinearLayout mError;
+    private TextView mRetry;
+
+    private LinearLayout mCompleted;
+    private TextView mReplay;
+    private TextView mShare;
+
+    //底部区域
     private LinearLayout mBottom;
+    private LinearLayout mBottomControl;
     private ImageView mRestartPause;
     private TextView mPosition;
     private TextView mDuration;
@@ -62,13 +74,6 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
 
     private LinearLayout mChangeVolume;
     private ProgressBar mChangeVolumeProgress;
-
-    private LinearLayout mError;
-    private TextView mRetry;
-
-    private LinearLayout mCompleted;
-    private TextView mReplay;
-    private TextView mShare;
 
     private boolean topBottomVisible;
     private CountDownTimer mDismissTopBottomCountDownTimer;
@@ -114,6 +119,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
         mTime = findViewById(R.id.time);
 
         mBottom = findViewById(R.id.bottom);
+        mBottomControl = findViewById(R.id.bottom_control);
         mRestartPause = findViewById(R.id.restart_or_pause);
         mPosition = findViewById(R.id.position);
         mDuration = findViewById(R.id.duration);
@@ -243,7 +249,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
                 mError.setVisibility(View.GONE);
                 mCompleted.setVisibility(View.GONE);
                 mTop.setVisibility(View.GONE);
-                mBottom.setVisibility(View.GONE);
+                setBottomVisible(false);
                 mCenterStart.setVisibility(View.GONE);
                 mLength.setVisibility(View.GONE);
                 break;
@@ -368,7 +374,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
         mCenterStart.setVisibility(View.VISIBLE);
         mImage.setVisibility(View.VISIBLE);
 
-        mBottom.setVisibility(View.GONE);
+        setBottomVisible(false);
         mFullScreen.setImageResource(R.drawable.player_ic_enlarge);
 
         mLength.setVisibility(View.VISIBLE);
@@ -454,7 +460,7 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
      */
     private void setTopBottomVisible(boolean visible) {
         mTop.setVisibility(visible ? View.VISIBLE : View.GONE);
-        mBottom.setVisibility(visible && mIsShowBottomController ? View.VISIBLE : View.GONE);
+        setBottomVisible(visible);
         topBottomVisible = visible;
         if (visible) {
             if (!mNiceVideoPlayer.isPaused() && !mNiceVideoPlayer.isBufferingPaused()) {
@@ -462,6 +468,20 @@ public class TxVideoPlayerController extends NiceVideoPlayerController implement
             }
         } else {
             cancelDismissTopBottomTimer();
+        }
+    }
+
+    /**
+     * 设置底部显示
+     * @param visible
+     */
+    private void setBottomVisible(boolean visible) {
+        if (visible) {
+            mBottom.setVisibility(View.VISIBLE);
+            mBottomControl.setVisibility(mIsShowBottomController ? View.VISIBLE : View.INVISIBLE);
+            mFullScreen.setVisibility(View.VISIBLE);
+        } else {
+            mBottom.setVisibility(View.GONE);
         }
     }
 
