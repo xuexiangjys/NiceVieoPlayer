@@ -20,11 +20,11 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compileOnly deps.support.app_compat
+    implementation deps.support.app_compat
     implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.3'
     implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.3'
     implementation 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.3'
     implementation 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.3'
 }
 
-apply from: "https://raw.githubusercontent.com/xuexiangjys/XUtil/master/JitPackUpload.gradle"
+apply from: "../JitPackUpload.gradle"
